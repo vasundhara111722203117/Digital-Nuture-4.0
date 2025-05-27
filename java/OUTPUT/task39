@@ -1,0 +1,4 @@
+Loaded class: MyClass  
+Method: sayHello  
+Invoking method sayHello...  
+Hello from MyClass!
