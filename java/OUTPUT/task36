@@ -1,0 +1,7 @@
+Response Status: 200 OK  
+Response Body:  
+{  
+  "login": "octocat",  
+  "id": 583231,  
+  "name": "The Octocat"  
+}
