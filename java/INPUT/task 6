@@ -1,0 +1,14 @@
+class DataTypeDemo {
+    public static void main(String[] args) {
+        int intValue = 25;
+        float floatValue = 12.34f;
+        double doubleValue = 123.456;
+        char charValue = 'A';
+        boolean boolValue = true;
+        System.out.println("int: " + intValue);
+        System.out.println("float: " + floatValue);
+        System.out.println("double: " + doubleValue);
+        System.out.println("char: " + charValue);
+        System.out.println("boolean: " + boolValue);
+    }
+}
