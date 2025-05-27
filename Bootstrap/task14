@@ -1,0 +1,4 @@
+  <section class="p-3">
+    <div class="d-none d-md-block">Visible on tablet and larger</div>
+    <aside class="d-none d-md-block bg-light p-2">Sidebar visible only on md+</aside>
+  </section>
