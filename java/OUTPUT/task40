@@ -1,0 +1,4 @@
+Launching 100000 virtual threads...  
+All threads launched.  
+Each thread prints: Hello from virtual thread!  
+Performance: Completed in 50ms
