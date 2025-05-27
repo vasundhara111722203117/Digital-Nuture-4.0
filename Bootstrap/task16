@@ -1,0 +1,11 @@
+  <!-- 16. Positioning Utilities -->
+
+  <footer class="position-fixed bottom-0 bg-dark text-white w-100 text-center p-2">
+    Fixed Footer
+  </footer>
+  <div class="position-relative mt-5">
+    <img src="https://via.placeholder.com/200" class="img-fluid" alt="Badge Example">
+    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+      9+
+    </span>
+  </div>
