@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Local Community Event Portal</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+  <!-- Internal Styles -->
+  <style>
+    /* Reset default margin/padding */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Body background */
+    body {
+      background: url('https://via.placeholder.com/1500x800') no-repeat center center;
+      background-size: cover;
+      background-color: #eeeeee; /* fallback */
+      font-family: 'Roboto', sans-serif;
+      padding: 20px;
+    }
+
+    /* Header styles */
+    #mainHeader {
+      background-color: #222;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    /* Event card style */
+    .eventCard {
+      background-color: white;
+      border: 1px solid #ccc;
+      padding: 20px;
+      margin: 20px 0;
+    }
+
+    /* CTA Button */
+    .cta-button {
+      background-color: #007BFF;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      display: inline-block;
+    }
+
+    /* Typography styles */
+    .description {
+      font-size: 16px;
+      font-style: italic;
+      font-weight: 400;
+      text-align: justify;
+      text-transform: capitalize;
+      letter-spacing: 1px;
+      line-height: 1.6;
+      margin: 10px 0;
+    }
+
+    /* Gradient Header Section */
+    section.header {
+      background: linear-gradient(to right, #004080, #66ccff);
+      color: white;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+
+    /* Link styling */
+    a:link {
+      color: #0056b3;
+    }
+
+    a:hover {
+      color: #ff6600;
+    }
+
+    a:active {
+      color: red;
+    }
+
+    a:visited {
+      color: gray;
+    }
+
+    /* List styling */
+    ul.nav {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    ul.nav li {
+      margin: 10px 0;
+    }
+
+    /* Table styling */
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    /* Box model properties */
+    input:focus {
+      outline: 2px solid #007BFF;
+    }
+
+    .hidden {
+      visibility: hidden;
+    }
+
+    .none {
+      display: none;
+    }
+
+    /* Multi-column text */
+    .news-article {
+      column-count: 2;
+      column-gap: 30px;
+      column-rule: 1px solid gray;
+      margin-top: 20px;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      nav ul {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+
+      body {
+        font-size: 14px;
+      }
+
+      .container {
+        width: 90vw;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Inline styled heading -->
+  <h1 style="color: red;">Community Events</h1>
+
+  <!-- Main Header -->
+  <div id="mainHeader">
+    <h2>Welcome to Our Local Community Portal</h2>
+  </div>
+
+  <!-- Gradient Section -->
+  <section class="header">
+    <h2>Upcoming Events</h2>
+  </section>
+
+  <!-- Navigation List -->
+  <nav>
+    <ul class="nav">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Events</a></li>
+      <li><a href="#">Register</a></li>
+    </ul>
+  </nav>
+
+  <!-- Event Card -->
+  <div class="eventCard">
+    <h3>Tree Plantation Drive</h3>
+    <p class="description">Join us for a greener tomorrow.</p>
+    <a href="#" class="cta-button">Join Now</a>
+  </div>
+
+  <!-- Events Table -->
+  <table>
+    <thead>
+      <tr>
+        <th>Event</th>
+        <th>Date</th>
+        <th>Location</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Clean City Campaign</td>
+        <td>June 10, 2025</td>
+        <td>Community Park</td>
+      </tr>
+      <tr>
+        <td>Yoga Morning</td>
+        <td>June 15, 2025</td>
+        <td>Town Hall</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- News Article -->
+  <div class="news-article">
+    <p>
+      The local community portal is designed to bring citizens together and encourage participation in civic events. From charity fundraisers to skill workshops, the platform offers a one-stop destination for event discovery and registration. Stay connected and make a difference by staying updated through our bulletin board.
+    </p>
+  </div>
+
+</body>
+</html>
