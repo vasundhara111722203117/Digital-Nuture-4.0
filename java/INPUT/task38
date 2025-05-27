@@ -1,0 +1,10 @@
+
+class Simple {
+    int square(int x) {
+        return x * x;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new Simple().square(5));
+    }
+}
