@@ -1,0 +1,34 @@
+
+
+import java.io.*;
+import java.net.*;
+
+class Server {
+    public static void main(String[] args) throws Exception {
+        ServerSocket ss = new ServerSocket(5000);
+        Socket s = ss.accept();
+        BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+        PrintWriter out = new PrintWriter(s.getOutputStream(), true);
+        out.println("Hello Client");
+        System.out.println(in.readLine());
+        s.close();
+        ss.close();
+    }
+}
+
+
+
+
+import java.io.*;
+import java.net.*;
+
+class Client {
+    public static void main(String[] args) throws Exception {
+        Socket s = new Socket("localhost", 5000);
+        BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+        PrintWriter out = new PrintWriter(s.getOutputStream(), true);
+        System.out.println(in.readLine());
+        out.println("Hello Server");
+        s.close();
+    }
+}
