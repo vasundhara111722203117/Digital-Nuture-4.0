@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Community Event Portal</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <h1>Community Events</h1>
+
+  <input type="text" id="searchInput" placeholder="Search by name" />
+  <select id="categoryFilter">
+    <option value="all">All Categories</option>
+    <option value="Music">Music</option>
+    <option value="Workshop">Workshop</option>
+  </select>
+
+  <div id="eventsContainer"></div>
+
+  <form id="registrationForm">
+    <h2>Register for an Event</h2>
+    <input type="text" name="username" placeholder="Name" required />
+    <input type="email" name="email" placeholder="Email" required />
+    <select name="eventSelect" required></select>
+    <button type="submit" id="registerBtn">Register</button>
+  </form>
+
+  <div id="message"></div>
+
+  <script>
+    // 1. Setup & Logging
+    console.log("Welcome to the Community Portal");
+    window.onload = () => alert("Page fully loaded");
+
+    // 2. Variables & Data Types
+    const sampleEventName = "Music Fest";
+    const sampleEventDate = "2025-08-10";
+    let sampleSeats = 50;
+    console.log(`${sampleEventName} on ${sampleEventDate}, Seats: ${sampleSeats}`);
+
+    // 3. Event Data
+    let events = [
+      { id: 1, name: "Music Fest", date: "2025-08-10", category: "Music", seats: 50, location: "Park" },
+      { id: 2, name: "Workshop on Baking", date: "2024-04-01", category: "Workshop", seats: 0, location: "Hall" },
+      { id: 3, name: "Local Jam", date: "2025-09-01", category: "Music", seats: 30, location: "Cafe" }
+    ];
+
+    // 4. Functions, Closures
+    function addEvent(event) {
+      events.push(event);
+    }
+
+    function registerUser(eventId) {
+      try {
+        const event = events.find(e => e.id === eventId);
+        if (event && event.seats > 0) {
+          event.seats--;
+          console.log(`Registered for ${event.name}`);
+        } else {
+          throw new Error("Event full or not found");
+        }
+      } catch (error) {
+        console.error("Registration failed:", error.message);
+      }
+    }
+
+    function filterEventsByCategory(cat, callback) {
+      const filtered = events.filter(e => cat === "all" || e.category === cat);
+      callback(filtered);
+    }
+
+    const categoryCount = (() => {
+      const counters = {};
+      return category => {
+        counters[category] = (counters[category] || 0) + 1;
+        return counters[category];
+      };
+    })();
+
+    // 5. Object + Prototypes
+    function Event(name, date, category, seats, location) {
+      this.name = name;
+      this.date = date;
+      this.category = category;
+      this.seats = seats;
+      this.location = location;
+    }
+    Event.prototype.checkAvailability = function () {
+      return this.seats > 0;
+    };
+
+    // 6. Arrays
+    events.push(new Event("Art Expo", "2025-10-10", "Workshop", 20, "Gallery"));
+
+    // 7. DOM Manipulation
+    const container = document.querySelector("#eventsContainer");
+    function renderEvents(eventsList) {
+      container.innerHTML = "";
+      eventsList.forEach(e => {
+        if (new Date(e.date) > new Date() && e.seats > 0) {
+          const card = document.createElement("div");
+          card.innerHTML = `
+            <h3>${e.name}</h3>
+            <p>${e.date} @ ${e.location}</p>
+            <p>Category: ${e.category}, Seats: ${e.seats}</p>
+            <button onclick="registerUser(${e.id}); renderEvents(events);">Register</button>
+          `;
+          container.appendChild(card);
+        }
+      });
+    }
+
+    // 8. Event Handling
+    document.querySelector("#categoryFilter").onchange = e =>
+      filterEventsByCategory(e.target.value, renderEvents);
+
+    document.querySelector("#searchInput").addEventListener("keydown", e => {
+      const keyword = e.target.value.toLowerCase();
+      const filtered = events.filter(ev => ev.name.toLowerCase().includes(keyword));
+      renderEvents(filtered);
+    });
+
+    // 9. Async JS
+    async function fetchEvents() {
+      document.querySelector("#message").innerText = "Loading events...";
+      try {
+        const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+        const data = await res.json();
+        setTimeout(() => {
+          document.querySelector("#message").innerText = "Fetched mock events!";
+        }, 1000);
+      } catch (err) {
+        document.querySelector("#message").innerText = "Failed to fetch events!";
+      }
+    }
+    fetchEvents();
+
+    // 10. Modern Features
+    const [firstEvent, ...rest] = events;
+    const cloneList = [...events];
+    const logDetails = ({ name, date }) => console.log(`Upcoming: ${name} on ${date}`);
+    logDetails(firstEvent);
+
+    // 11. Form Handling
+    const form = document.querySelector("#registrationForm");
+    const select = form.elements.eventSelect;
+    events.forEach(e => {
+      if (e.seats > 0) {
+        const opt = document.createElement("option");
+        opt.value = e.id;
+        opt.text = e.name;
+        select.appendChild(opt);
+      }
+    });
+
+    form.onsubmit = function (e) {
+      e.preventDefault();
+      const username = form.elements.username.value;
+      const email = form.elements.email.value;
+      const eventId = parseInt(form.elements.eventSelect.value);
+
+      if (!username || !email) {
+        document.querySelector("#message").innerText = "Please fill all fields.";
+        return;
+      }
+
+      registerUser(eventId);
+      document.querySelector("#message").innerText = "Registered successfully!";
+      renderEvents(events);
+      postRegistration({ username, email, eventId });
+    };
+
+    // 12. Simulate POST
+    function postRegistration(data) {
+      fetch("https://jsonplaceholder.typicode.com/posts", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: { "Content-type": "application/json" }
+      })
+        .then(res => res.json())
+        .then(json => {
+          setTimeout(() => {
+            console.log("Submitted:", json);
+          }, 1000);
+        })
+        .catch(err => console.error("Error:", err));
+    }
+
+    // 13. Debug Logs
+    console.log("Form ready. Waiting for submission...");
+    console.log("Initial event list:", events);
+
+    // 14. jQuery
+    $("#registerBtn").click(() => {
+      $("#message").fadeOut().fadeIn();
+    });
+
+    // Initial Render
+    renderEvents(events);
+  </script>
+</body>
+</html>
