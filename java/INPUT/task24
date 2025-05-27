@@ -1,0 +1,20 @@
+import java.util.*;
+
+class ArrayListExample {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<String> names = new ArrayList<>();
+        System.out.println("Enter names (type 'stop' to finish):");
+        while (true) {
+            String name = scanner.nextLine();
+            if (name.equalsIgnoreCase("stop")) {
+                break;
+            }
+            names.add(name);
+        }
+        System.out.println("Student names:");
+        for (String n : names) {
+            System.out.println(n);
+        }
+    }
+}
