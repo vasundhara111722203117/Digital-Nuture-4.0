@@ -1,0 +1,25 @@
+import java.util.*;
+
+class HashMapExample {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        HashMap<Integer, String> students = new HashMap<>();
+        System.out.println("Enter student ID and name (type -1 to stop):");
+        while (true) {
+            int id = scanner.nextInt();
+            scanner.nextLine();
+            if (id == -1) {
+                break;
+            }
+            String name = scanner.nextLine();
+            students.put(id, name);
+        }
+        System.out.print("Enter ID to search: ");
+        int searchId = scanner.nextInt();
+        if (students.containsKey(searchId)) {
+            System.out.println("Name: " + students.get(searchId));
+        } else {
+            System.out.println("ID not found");
+        }
+    }
+}
