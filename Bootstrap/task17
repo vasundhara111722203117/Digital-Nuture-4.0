@@ -1,0 +1,11 @@
+  <!-- 17. Icons with Bootstrap Icons -->
+
+  <footer class="footer-icons text-center mt-5">
+    <a href="#"><i class="bi bi-facebook"></i></a>
+    <a href="#"><i class="bi bi-twitter"></i></a>
+    <a href="#"><i class="bi bi-instagram"></i></a>
+  </footer>
+  <div class="btn-group mt-3">
+    <button class="btn btn-outline-primary"><i class="bi bi-house"></i></button>
+    <button class="btn btn-outline-secondary"><i class="bi bi-gear"></i></button>
+  </div>
