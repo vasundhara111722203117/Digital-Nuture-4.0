@@ -1,0 +1,6 @@
+<!-- 15. Borders, Shadows, and Rounded Corners -->
+
+  <section class="p-3">
+    <img src="https://via.placeholder.com/100" class="border border-primary border-3 rounded-circle" alt="Rounded Image">
+    <div class="card shadow-lg rounded-pill mt-3 p-3">Shadowed Pill Card</div>
+  </section>
