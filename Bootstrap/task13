@@ -1,0 +1,5 @@
+<section class="bg-primary text-white p-4">
+    <h3>Dashboard</h3>
+    <p class="bg-warning text-dark p-2">Warning notice!</p>
+    <div class="bg-dark text-white bg-gradient p-3">Gradient section</div>
+  </section>
